@@ -71,18 +71,21 @@ export default function Gallery() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-neutral-900">
       <div className="pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
 
-          <div className="text-center mb-12 sm:mb-16">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+          <div className="text-center mb-12 sm:mb-20">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
               Our Expertise in Every Detail
             </h1>
-            <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
-            <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed px-4">
-              Explore our portfolio of projects and manufacturing capabilities. From precision engineering
-              to finished products, discover the quality and attention to detail that defines our work.
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="h-1 w-12 bg-amber-500"></div>
+              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+              <div className="h-1 w-12 bg-amber-500"></div>
+            </div>
+            <p className="text-base sm:text-lg text-neutral-300 max-w-2xl mx-auto leading-relaxed px-4">
+              Explore our portfolio of metal fabrication projects and manufacturing capabilities
             </p>
           </div>
 
@@ -91,7 +94,7 @@ export default function Gallery() {
               <div
                 key={image.id}
                 onClick={() => handleImageClick(index)}
-                className={`group relative cursor-pointer overflow-hidden rounded-lg bg-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 ${
+                className={`group relative cursor-pointer overflow-hidden bg-neutral-800 shadow-sm hover:shadow-2xl transition-all duration-500 border border-neutral-700 hover:border-amber-500 ${
                   isLoading ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
                 } ${
                   (index % 7 === 0 || index % 7 === 4) ? 'row-span-2' : 'aspect-square'
@@ -108,29 +111,7 @@ export default function Gallery() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1">
-                        <h3 className="text-white font-bold text-sm sm:text-base mb-1 leading-tight">
-                          {image.title}
-                        </h3>
-                        <p className="text-blue-300 text-xs font-medium uppercase tracking-wider">
-                          {image.category}
-                        </p>
-                      </div>
-                      <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                        <ZoomIn className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-slate-900/80 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">
-                    Click to view
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
               </div>
             ))}
           </div>
@@ -145,7 +126,7 @@ export default function Gallery() {
 
       {selectedImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/98 backdrop-blur-md animate-fadeIn"
           onClick={handleClose}
         >
           <div className="relative w-full h-full max-w-7xl mx-auto p-4 sm:p-8 flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
@@ -154,47 +135,38 @@ export default function Gallery() {
               <img
                 src={selectedImage.url.replace('w=800', 'w=1600')}
                 alt={selectedImage.title}
-                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl animate-scaleIn"
+                className="max-w-full max-h-full object-contain animate-scaleIn border border-amber-500/30"
               />
-
-              <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-4 sm:p-6 rounded-b-lg">
-                <h3 className="text-white font-bold text-lg sm:text-2xl mb-1 sm:mb-2">{selectedImage.title}</h3>
-                <p className="text-blue-400 text-xs sm:text-sm font-medium uppercase tracking-wider">{selectedImage.category}</p>
-              </div>
             </div>
 
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 z-10"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-neutral-800/90 hover:bg-neutral-700 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 z-10 border border-neutral-600 hover:border-amber-500"
               aria-label="Close"
             >
-              <X className="w-5 h-5 sm:w-6 sm:h-6 text-slate-900" />
+              <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </button>
 
             <button
               onClick={handlePrev}
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 z-10"
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-neutral-800/90 hover:bg-neutral-700 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 z-10 border border-neutral-600 hover:border-amber-500"
               aria-label="Previous image"
             >
-              <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7 text-slate-900" />
+              <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
             </button>
 
             <button
               onClick={handleNext}
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 z-10"
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-neutral-800/90 hover:bg-neutral-700 backdrop-blur-sm rounded-full p-2 sm:p-3 transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 z-10 border border-neutral-600 hover:border-amber-500"
               aria-label="Next image"
             >
-              <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7 text-slate-900" />
+              <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
             </button>
 
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 sm:bottom-6 sm:top-auto bg-slate-900/80 backdrop-blur-sm px-4 sm:px-5 py-2 rounded-full shadow-lg z-10">
-              <p className="text-white text-xs sm:text-sm font-medium">
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-neutral-900/90 backdrop-blur-sm px-4 sm:px-5 py-2 rounded shadow-lg z-10 border border-neutral-700">
+              <p className="text-amber-400 text-xs sm:text-sm font-medium">
                 {currentIndex + 1} / {galleryImages.length}
               </p>
-            </div>
-
-            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-slate-900/80 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg hidden sm:block">
-              <p className="text-slate-300 text-xs">Use arrow keys or swipe to navigate</p>
             </div>
           </div>
         </div>
