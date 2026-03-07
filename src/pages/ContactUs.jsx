@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Phone, Mail, MapPin, Building2, User, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Building2, User, CircleCheck as CheckCircle2 } from 'lucide-react';
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({
