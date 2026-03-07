@@ -122,47 +122,62 @@ export default function Gallery() {
 
       {selectedImage && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/98 backdrop-blur-md animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-900/95 via-slate-900/98 to-black/95 backdrop-blur-lg animate-fadeIn"
           onClick={handleClose}
         >
-          <div className="relative w-full h-full max-w-7xl mx-auto p-4 sm:p-8 flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+          <div className="relative w-full h-full flex flex-col items-center justify-center p-4 sm:p-6" onClick={(e) => e.stopPropagation()}>
 
-            <div className="relative w-full h-full flex items-center justify-center">
+            <div className="relative w-full h-full max-w-6xl flex items-center justify-center">
               <img
                 src={selectedImage.url.replace('w=800', 'w=1600')}
                 alt={selectedImage.title}
-                className="max-w-full max-h-full object-contain animate-scaleIn border-2 border-blue-600/50 rounded-lg"
+                className="max-w-full max-h-[80vh] object-contain animate-scaleIn rounded-xl shadow-2xl"
               />
             </div>
 
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white hover:bg-slate-100 rounded-full p-2 sm:p-3 transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 z-10 border-2 border-slate-200"
+              className="absolute top-6 right-6 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white p-3 transition-all duration-300 shadow-2xl hover:scale-110 active:scale-95 z-20 border border-white/20 hover:border-white/40 rounded-xl"
               aria-label="Close"
             >
-              <X className="w-5 h-5 sm:w-6 sm:h-6 text-slate-900" />
+              <X className="w-6 h-6" />
             </button>
 
             <button
               onClick={handlePrev}
-              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white hover:bg-slate-100 rounded-full p-2 sm:p-3 transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 z-10 border-2 border-slate-200"
+              className="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white p-3 sm:p-4 transition-all duration-300 shadow-2xl hover:scale-110 active:scale-95 z-20 border border-white/20 hover:border-white/40 rounded-xl"
               aria-label="Previous image"
             >
-              <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7 text-slate-900" />
+              <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7" />
             </button>
 
             <button
               onClick={handleNext}
-              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white hover:bg-slate-100 rounded-full p-2 sm:p-3 transition-all duration-200 shadow-xl hover:scale-110 active:scale-95 z-10 border-2 border-slate-200"
+              className="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white p-3 sm:p-4 transition-all duration-300 shadow-2xl hover:scale-110 active:scale-95 z-20 border border-white/20 hover:border-white/40 rounded-xl"
               aria-label="Next image"
             >
-              <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7 text-slate-900" />
+              <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7" />
             </button>
 
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-white backdrop-blur-sm px-4 sm:px-5 py-2 rounded shadow-lg z-10 border-2 border-slate-200">
-              <p className="text-blue-600 text-xs sm:text-sm font-bold">
-                {currentIndex + 1} / {galleryImages.length}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full shadow-2xl z-20 border border-white/20 hover:border-white/40 transition-colors">
+              <p className="text-white text-sm font-medium">
+                {currentIndex + 1} <span className="text-white/60">of</span> {galleryImages.length}
               </p>
+            </div>
+
+            <div className="absolute bottom-8 right-8 flex gap-2 z-20">
+              <button
+                onClick={handlePrev}
+                className="text-white/60 hover:text-white transition-colors text-xs sm:text-sm font-medium px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20"
+              >
+                Prev
+              </button>
+              <button
+                onClick={handleNext}
+                className="text-white/60 hover:text-white transition-colors text-xs sm:text-sm font-medium px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg hover:bg-white/20"
+              >
+                Next
+              </button>
             </div>
           </div>
         </div>

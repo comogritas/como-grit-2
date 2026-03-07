@@ -287,7 +287,7 @@ export default function ContactUs() {
             </div>
             <div className="w-full h-96 bg-slate-100">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2854.1234567890!2d16.4572!3d43.5081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13355d26e8e8e8e9%3A0x1234567890abcdef!2sRooseveltova%2012%2C%2021000%20Split%2C%20Croatia!5e0!3m2!1sen!2shr!4v1700000000000"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=16.43%2C43.50%2C16.48%2C43.52&layer=mapnik&marker=43.5081%2C16.4572"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
